@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <script src="./script/libs/jquery.js"></script>
+    <script src="./script/libs/jquery-ui.js"></script>
+    <script src="./script/libs/jquery-migrate-1.2.1.js"></script>
+    <script src="./script/libs/draw2d.js"></script>
+    <script src="./draw2d/logical/logical.js"></script>
+    <script src="./draw2d/logical/variable.js"></script>
+    <script src="./script/index.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="menu">
+            <div id="toolbar">
+                <button id="elements">Elements</button>
+                <button id="btnFunCreate">Function Create</button>
+                <button id="btnBuildTableScheme">Build Truth Table</button>
+                <button id="btnMenu">Show Right Menu</button>
+                <button id="btnSave">Save</button>
+            </div>
+        </div>
+        <div id="gfx_holder"></div>
+        <div class="leftMenu" id="logical">
+            <div id="logicalElements">
+                <div class="outerEl">
+                    <div id="logicalAND" type="logical" class="draggable logicalElement">
+                        AND
+                    </div>
+                </div>
+                <div class="outerEl">
+                    <div id="logicalOR" type="logical" class="draggable logicalElement">
+                        OR
+                    </div>
+                </div>
+                <div class="outerEl">
+                    <div id="logicalANDNOT" type="logical" class="draggable logicalElement">
+                        ANDNOT
+                    </div>
+                </div>
+                <div class="outerEl">
+                    <div id="logicalORNOT" type="logical" class="draggable logicalElement">
+                        ORNOT
+                    </div>
+                </div>
+                <div class="outerEl">
+                    <div id="logicalNOT" type="logical" class="draggable logicalElement">
+                        NOT
+                    </div>
+                </div>
+                <div class="outerEl">
+                    <div id="variableINOUT" type="variable" class="draggable logicalElement">
+                        VAR
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightMenu">
+            <div id="topRight">
+                <div id="centerText">Function</div>
+                <div>
+                    <input id="inputFunction" value="Y1 = !(!(((X3 + X5) * !(X4 * X2))) * X5 * !(!(!(X4 * X2) + !(X3 * X1))))"></input>
+                </div>
+                <div>
+                    <button id="btnBuildScheme">Build Scheme</button>
+                    <button id="btnBuildTable">Build Truth Table</button>
+                    <button id="btnClearTables">Clear Truth Tables</button>
+                </div>
+            </div>
+            <div id="tables"></div>
+        </div>
+    </div>
+</body>
+
+</html>

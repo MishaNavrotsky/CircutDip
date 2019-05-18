@@ -1,0 +1,177 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+#container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+div {
+    display: block;
+}
+
+#gfx_holder {
+    position: absolute;
+    background-color: lightgray;
+    top: 64px;
+    bottom: 0px;
+    right: 0px;
+    overflow: auto;
+    left: 100px;
+    z-index: 0;
+    display: block;
+    visibility: visible;
+    width: 3000px;
+    height: 3000px;
+}
+
+#menu {
+    background-color: darkgrey;
+    position: absolute;
+    width: 100%;
+    height: 64px;
+}
+
+button {
+    padding: 10px 10px;
+    border-radius: 2px 2px;
+    /* border: solid 1px #dadada; */
+    background: #f4f4f479;
+    /* background: -webkit-linear-gradient(top, #f4f4f4 0%, #f1f1f1 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#f1f1f1', GradientType=0);
+    color:black;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 1);
+    line-height: 1;
+    font-size: 11px;
+    min-width: 80px;
+}
+
+
+#toolbar {
+    padding: 15.5px;
+}
+
+.leftMenu {
+    position: absolute;
+    top: 64px;
+    width: 100px;
+    bottom: 0px;
+    background-color: lightslategray;
+    overflow-y: auto;
+}
+
+.draggable {
+    cursor: move;
+}
+
+#logicalElements {
+    margin-left: 25px;
+}
+
+.outerEl {
+    margin-top: 20px;
+}
+
+.logicalElement {
+    height: 70px;
+    width: 50px;
+    background-color: rgb(160, 160, 160);
+    border-color: rgb(27, 27, 27);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    border: solid 1px;
+}
+
+/* width */
+.leftMenu::-webkit-scrollbar, #tables::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.leftMenu::-webkit-scrollbar-track, #tables::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.leftMenu::-webkit-scrollbar-thumb, #tables::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.leftMenu::-webkit-scrollbar-thumb:hover, #tables::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.rightMenu {
+    display: none;
+    position: absolute;
+    top: 64px;
+    width: 700px;
+    bottom: 0px;
+    right: 0px;
+    background-color: lightslategray;
+}
+
+#btnSave,#btnMenu {
+    float: right;
+}
+
+#btnMenu {
+    margin-left: 5px;
+}
+
+#centerText {
+    text-align: center;
+    font-size: 30px;
+}
+
+#inputFunction {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 660px;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#btnBuildScheme,
+#btnBuildTable,
+#btnClearTables {
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 204px;
+    display: inline-block;
+}
+
+#tables {
+    margin-left: 20px;
+    font-size: 14px;
+    overflow-x: auto;
+    overflow-y: auto;
+    height: calc(100% - 105px);
+}

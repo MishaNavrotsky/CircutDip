@@ -1,0 +1,4 @@
+.vs/
+server/node_modules/
+server/db/node_modules/
+site/node_modules/
