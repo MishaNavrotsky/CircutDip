@@ -54,7 +54,7 @@ button {
     background: #f4f4f479;
     /* background: -webkit-linear-gradient(top, #f4f4f4 0%, #f1f1f1 100%); */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#f1f1f1', GradientType=0);
-    color:black;
+    color: black;
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
@@ -105,23 +105,27 @@ button {
 }
 
 /* width */
-.leftMenu::-webkit-scrollbar, #tables::-webkit-scrollbar {
+.leftMenu::-webkit-scrollbar,
+#tables::-webkit-scrollbar {
     width: 5px;
 }
 
 /* Track */
-.leftMenu::-webkit-scrollbar-track, #tables::-webkit-scrollbar-track {
+.leftMenu::-webkit-scrollbar-track,
+#tables::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
 /* Handle */
-.leftMenu::-webkit-scrollbar-thumb, #tables::-webkit-scrollbar-thumb {
+.leftMenu::-webkit-scrollbar-thumb,
+#tables::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
 }
 
 /* Handle on hover */
-.leftMenu::-webkit-scrollbar-thumb:hover, #tables::-webkit-scrollbar-thumb:hover {
+.leftMenu::-webkit-scrollbar-thumb:hover,
+#tables::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
@@ -135,7 +139,8 @@ button {
     background-color: lightslategray;
 }
 
-#btnSave,#btnMenu {
+#btnSave,
+#btnMenu {
     float: right;
 }
 
@@ -174,4 +179,12 @@ button {
     overflow-x: auto;
     overflow-y: auto;
     height: calc(100% - 105px);
+}
+
+#userName {
+    margin-left: 5px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 33px;
+    float: right;
 }
