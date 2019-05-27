@@ -156,7 +156,13 @@ async function main() {
 
     app.post("/logout",function(req,res){
         req.logout();
-        res.send("OK");
+        res.end();
+    });
+
+    app.post("/changeName",async function(req,res){
+        var json = req.body;
+        await db.changeSchemeDisplayName(json.url,json.name);
+        res.end();
     });
 
     app.listen(80);

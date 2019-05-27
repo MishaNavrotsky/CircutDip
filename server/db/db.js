@@ -47,6 +47,11 @@ class db {
         return this.collection.find({user:username},{projection:{json:0,user:0,_id:0}}).toArray();
     }
 
+    async changeSchemeDisplayName(schemeURL,schemeName){
+        console.log(schemeURL);
+        return await this.collection.updateOne({url:schemeURL},{$set:{name:schemeName}});
+    }
+
 }
 module.exports = {
     db
