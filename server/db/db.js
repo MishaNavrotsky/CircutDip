@@ -33,7 +33,7 @@ class db {
     }
 
     async deleteScheme (url){
-        return this.collection.remove({url});
+        return this.collection.deleteOne({url});
     }
     async findUser(username){
         return this.users.findOne({username});

@@ -2,3 +2,5 @@
 server/node_modules/
 server/db/node_modules/
 site/node_modules/
+server/session/node_modules/
+server/view/node_modules/
