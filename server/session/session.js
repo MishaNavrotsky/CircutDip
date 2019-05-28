@@ -16,7 +16,7 @@ class session {
         });
 
         this.passport.use(new this.LocalStrategy(
-            async function checkUserData(username, password, done) {
+            async function signinCheck(username, password, done) {
                 var user = await this.db.findUser(username);
                 if (!user) return done(null, false);
                 if (user.username == username && user.password == password) {
