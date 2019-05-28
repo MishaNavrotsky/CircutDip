@@ -92,7 +92,7 @@ class view {
             var data = await this.db.findScheme(req.path);
             if (data) {
                 if (data.user == req.user.username) {
-                    return res.send(data);
+                    return res.send(data.json);
                 }
             }
             res.send("error");
