@@ -27,7 +27,7 @@ class view {
                 successRedirect: "/menu"
             }));
 
-        this.app.use(function (req, res, next) {
+        this.app.use(function redirect(req, res, next) {
             if (req.path == "/signup") {
                 next();
                 return res.redirect("/login");
@@ -45,25 +45,25 @@ class view {
     }
 
     createView() {
-        this.app.get('/login', function (req, res) {
+        this.app.get('/login', function loginPageGet(req, res) {
             res.sendFile("login.html", {
                 root: "../site"
             });
         })
 
-        this.app.get('/menu', function (req, res) {
+        this.app.get('/menu', function menuPageGet(req, res) {
             res.sendFile("menu.html", {
                 root: "../site"
             });
         })
 
-        this.app.get('/signup', async function (req, res) {
+        this.app.get('/signup', async function signupGet(req, res) {
             var user = await this.db.findUser(req.query.username);
             if (!user)
                 this.db.createUser(req.query);
         }.bind(this))
 
-        this.app.get('/', function (req, res) {
+        this.app.get('/', function mainPageGet(req, res) {
             res.sendFile("index.html", {
                 root: "../site"
             });
@@ -87,7 +87,7 @@ class view {
             });
         })
 
-        this.app.get("/scheme/*", async function (req, res) {
+        this.app.get("/scheme/*", async function schemeGet(req, res) {
             // var url = req.path.slice(req.path.lastIndexOf("/"));
             var data = await this.db.findScheme(req.path);
             if (data) {
@@ -98,20 +98,20 @@ class view {
             res.send("error");
         }.bind(this))
 
-        this.app.get("/url", function (req, res) {
+        this.app.get("/url", function urlGet(req, res) {  
             res.send(this.randomValueHex(8));
         }.bind(this))
 
-        this.app.get("/allSchemes", async function (req, res) {
+        this.app.get("/allSchemes", async function userSchemesGet(req, res) {
             var schemes = await this.db.findAllUserSchemes(req.user.username);
             res.send(schemes);
         }.bind(this));
 
-        this.app.post("/deleteScheme", async function (req, res) {
+        this.app.post("/deleteScheme", async function schemeDeletePost(req, res) {
             await this.db.deleteScheme(req.body.url);
             res.end();
         }.bind(this));
-        this.app.get("/username", function (req, res) {
+        this.app.get("/username", function usernameGet(req, res) {
             res.send(req.user.username);
         }.bind(this))
         this.app.get("*", function (req, res) {
@@ -120,7 +120,7 @@ class view {
             });
         })
 
-        this.app.post("/scheme/*", function (req, res) {
+        this.app.post("/scheme/*", function schemePost(req, res) {
             var data = req.body.data;
             this.db.updateScheme(req.path, {
                 user: req.user.username,
@@ -129,12 +129,12 @@ class view {
             res.end();
         }.bind(this))
 
-        this.app.post("/logout", function (req, res) {
+        this.app.post("/logout", function logoutPost(req, res) {
             req.logout();
             res.end();
         });
 
-        this.app.post("/changeName", async function (req, res) {
+        this.app.post("/changeName", async function schemeChangeNamePost(req, res) {
             var json = req.body;
             await this.db.changeSchemeDisplayName(json.url, json.name);
             res.end();

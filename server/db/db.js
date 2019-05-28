@@ -48,7 +48,6 @@ class db {
     }
 
     async changeSchemeDisplayName(schemeURL,schemeName){
-        console.log(schemeURL);
         return await this.collection.updateOne({url:schemeURL},{$set:{name:schemeName}});
     }
 
