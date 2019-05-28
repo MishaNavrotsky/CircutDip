@@ -3,6 +3,7 @@ class db {
         this.mongoClient = require("mongodb").MongoClient;
         this.connection = undefined;
         this.collection = undefined;
+        this.users = undefined;
         this.dbMain = undefined;
     }
     async connect(connectString) {
