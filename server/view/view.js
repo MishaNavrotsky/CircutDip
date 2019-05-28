@@ -59,8 +59,14 @@ class view {
 
         this.app.get('/signup', async function signupGet(req, res) {
             var user = await this.db.findUser(req.query.username);
-            if (!user)
-                this.db.createUser(req.query);
+            if (!user) {
+                var user = {
+                    username:req.query.username,
+                    password:req.query.password,
+                    createDate:new Date()
+                }
+                this.db.createUser(user);
+            }
         }.bind(this))
 
         this.app.get('/', function mainPageGet(req, res) {
@@ -124,7 +130,8 @@ class view {
             var data = req.body.data;
             this.db.updateScheme(req.path, {
                 user: req.user.username,
-                json: data
+                json: data,
+                lastUpdate: new Date()
             });
             res.end();
         }.bind(this))

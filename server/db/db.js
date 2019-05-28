@@ -39,8 +39,8 @@ class db {
         return this.users.findOne({username});
     }
 
-    async createUser({username, password}){
-        return this.users.insertOne({username,password});
+    async createUser({username, password, createDate}){
+        return this.users.insertOne({username,password,createDate});
     }
 
     async findAllUserSchemes(username){
