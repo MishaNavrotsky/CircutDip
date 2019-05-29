@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    $("#newScheme").on("click", function () {
+    $("#newScheme").on("click", function newWindow() {
         window.open("/");
     })
-    $("#LogOut").on("click", function () {
+    $("#LogOut").on("click", function logOut() {
         $.post({
             url: "/logout",
             type: "POST",

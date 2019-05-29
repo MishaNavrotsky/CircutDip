@@ -65,8 +65,10 @@ class view {
                     password:req.query.password,
                     createDate:new Date()
                 }
-                this.db.createUser(user);
+                await this.db.createUser(user);
+                res.end();
             }
+            res.end("error");
         }.bind(this))
 
         this.app.get('/', function mainPageGet(req, res) {
@@ -126,9 +128,9 @@ class view {
             });
         })
 
-        this.app.post("/scheme/*", function schemePost(req, res) {
+        this.app.post("/scheme/*",async function schemePost(req, res) {
             var data = req.body.data;
-            this.db.updateScheme(req.path, {
+            await this.db.updateScheme(req.path, {
                 user: req.user.username,
                 json: data,
                 lastUpdate: new Date()

@@ -6,26 +6,37 @@ class session {
         this.db = db;
     }
 
+    serializeUser(user, done) {
+        return done(null, user);
+    }
+
+    deserializeUser(user, done) {
+        return done(null, user);
+    }
+
+    async signinCheck(username, password, done) {
+        var user = await this.db.findUser(username);
+        if (!user) return done(null, false);
+        if (user.username == username && user.password == password) {
+            return done(null, {
+                username,
+                password
+            });
+        }
+        return done(null, false)
+    }
     initializeSession() {
         this.passport.serializeUser(function (user, done) {
-            done(null, user);
-        });
+            this.serializeUser(user, done);
+        }.bind(this));
 
         this.passport.deserializeUser(function (user, done) {
-            done(null, user);
-        });
+            this.deserializeUser(user, done);
+        }.bind(this));
 
         this.passport.use(new this.LocalStrategy(
-            async function signinCheck(username, password, done) {
-                var user = await this.db.findUser(username);
-                if (!user) return done(null, false);
-                if (user.username == username && user.password == password) {
-                    return done(null, {
-                        username,
-                        password
-                    });
-                }
-                return done(null, false)
+            async function (username, password, done) {
+                return await this.signinCheck(username, password, done);
             }.bind(this)
         ));
     }
@@ -35,19 +46,19 @@ class session {
             secret: secret,
             resave: false,
             saveUninitialized: false
-        }); 
+        });
     }
 
-    passportyInitialize(){
+    passportyInitialize() {
         return this.passport.initialize();
     }
 
-    passportSession(){
+    passportSession() {
         return this.passport.session();
     }
 
-    passportAuthenticate(str,obj){
-        return this.passport.authenticate(str,obj);
+    passportAuthenticate(str, obj) {
+        return this.passport.authenticate(str, obj);
     }
 }
 module.exports = {
