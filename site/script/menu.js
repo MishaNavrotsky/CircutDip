@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     $.ajax({
         url: "/allSchemes"
-    }).done(function (data) {
+    }).done(function showSchemes(data) {
 
         function addZero(data){
             str = data + "";
@@ -62,9 +62,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
             })
 
-            butRename.on("click", function (e) {
+            butRename.on("click", function schemeNameChange(e) {
                 e.stopPropagation();
                 var newName = prompt("New Name:");
+                if(!newName) return;
                 var json = {
                     name:newName,
                     url: data[i].url
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     url: "/changeName",
                     type: "POST",
                     data: json
-                }).done(function () {
+                }).done(function reloadPage() {
                     document.location.reload();
                 })
             })
