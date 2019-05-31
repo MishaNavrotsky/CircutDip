@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toolbar.on("click", function () {
                 window.open(data[i].url.split("/")[2])
             });
-            butDelete.on("click", function (e) {
+            butDelete.on("click", function deleteScheme(e) {
                 e.stopPropagation();
                 $.post({
                     url: "/deleteScheme",
