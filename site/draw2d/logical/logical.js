@@ -68,6 +68,16 @@ var logical = draw2d.shape.basic.Rectangle.extend({
                 }
             }
         }
+
+        this.portInitialize = function(){
+            this.inputPorts.data.forEach(element => {
+                element.on("connect", hide, element);
+                element.on("disconnect", show, element);
+                if(element.connections.data.length>0){
+                    element.setVisible(false);
+                }
+            });
+        }
     },
     onContextMenu: function (x, y) {
         var shape = this.shape[0];
